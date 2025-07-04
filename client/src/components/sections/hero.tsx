@@ -50,8 +50,7 @@ export default function Hero() {
             </Button>
             <Button
               onClick={downloadResume}
-              variant="outline"
-              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-navy transition-all duration-300"
+              className="bg-white text-navy border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300"
             >
               <Download className="mr-2 h-4 w-4" />
               Download Resume

@@ -19,7 +19,7 @@ export default function Skills() {
       title: "Frameworks & Libraries",
       icon: Layers,
       color: "bg-green-500",
-      skills: ["Django", "React", "Spring Boot", "Qt", ".NET", "Spring"]
+      skills: ["Django", "React", "Spring Boot", "Qt", ".NET", "Spring", "Android Development"]
     },
     {
       title: "Databases & Backend",
