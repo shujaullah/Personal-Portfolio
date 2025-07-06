@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { z } from "zod";
 import path from "path";
+import nodemailer from "nodemailer";
 
 const contactFormSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -15,19 +16,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const validatedData = contactFormSchema.parse(req.body);
       
-      // In a real application, you would:
-      // 1. Send an email using a service like SendGrid, AWS SES, etc.
-      // 2. Store the message in a database
-      // 3. Send a confirmation email to the user
+      // Send email using Nodemailer
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'ahsanshujasalman@gmail.com',
+          pass: 'vjml qxmd hnpz vgwp',
+        },
+      });
+
+      const mailOptions = {
+        from: 'ahsanshujasalman@gmail.com',
+        to: 'ahsanshuja1127@gmail.com',
+        subject: `Portfolio Contact Form: ${validatedData.name}`,
+        text: `You have a new message from your portfolio contact form.\n\nName: ${validatedData.name}\nEmail: ${validatedData.email}\nMessage: ${validatedData.message}`,
+      };
+
+      await transporter.sendMail(mailOptions);
       
-      console.log("Contact form submission:", validatedData);
-      
-      // For now, we'll just log the submission and return success
       res.json({ 
-        message: "Contact form submitted successfully",
+        message: "Contact form submitted successfully and email sent!",
         data: validatedData 
       });
     } catch (error) {
+      console.error('Error sending contact email:', error);
       if (error instanceof z.ZodError) {
         res.status(400).json({ 
           message: "Validation error", 
