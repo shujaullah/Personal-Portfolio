@@ -4,16 +4,16 @@ A modern, responsive portfolio website showcasing software development experienc
 
 ## 🌐 Live Demo
 
-Visit the live portfolio: [https://shujaullah.github.io/ProfessionalPortfolio/](https://shujaullah.github.io/ProfessionalPortfolio/)
+Visit the live portfolio: [https://shujaullah.github.io/Personal-Portfolio/](https://shujaullah.github.io/Personal-Portfolio/)
 
 ## 🚀 Features
 
-- **Responsive Design** - Works perfectly on desktop, tablet, and mobile
-- **Modern UI/UX** - Clean, professional design with smooth animations
-- **Interactive Sections** - Skills visualization, project showcase, contact form
-- **Resume Download** - Direct PDF download functionality
-- **Contact Form** - Working contact form with email notifications
-- **SEO Optimized** - Meta tags and structured data
+- **Recruiter-focused layout** — Experience and projects before skills
+- **Working resume download** — PDF bundled via Vite with correct GitHub Pages base path
+- **Frictionless contact** — Email, LinkedIn, and mailto form (works on static hosting)
+- **Clear hiring pitch** — Role-aligned hero and skills stack
+- **Responsive design** — Desktop and mobile
+- **SEO / Open Graph** — Share-ready meta tags
 
 ## 🛠️ Technology Stack
 
@@ -36,8 +36,8 @@ Visit the live portfolio: [https://shujaullah.github.io/ProfessionalPortfolio/](
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/shujaullah/ProfessionalPortfolio.git
-   cd ProfessionalPortfolio
+   git clone https://github.com/shujaullah/Personal-Portfolio.git
+   cd Personal-Portfolio
    ```
 
 2. **Install dependencies**
@@ -98,9 +98,9 @@ portfolio/
 1. **Profile Photo**: Replace `attached_assets/image_1750795230400.png`
 2. **Resume PDF**: Replace `attached_assets/Resume_Shuja_1750795062850.pdf`
 
-## 📧 Contact Form
+## 📧 Contact
 
-The contact form is fully functional and sends emails to the configured email address. The backend uses Nodemailer with Gmail SMTP for email delivery.
+Primary CTAs use email and LinkedIn. The contact form opens the visitor’s mail client via `mailto:` so it works on GitHub Pages without a backend.
 
 ## 🤝 Contributing
 
