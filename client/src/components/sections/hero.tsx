@@ -1,17 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
-import professionalPhoto from "@assets/image_1750795230400.png";
+import professionalPhoto from "@assets/Shuja-Profile.jpg";
 import { SITE, downloadResume, mailtoHire } from "@/lib/site";
 
-const focusTags = ["C++ / Qt", "Medical Devices", "Full-Stack", "MySQL", "C# /.NET"];
+const focusTags = ["Problem Solver", "Full Product Ownership", "Medical Devices", "Data Science", "Open to Roles"];
 const marqueeItems = [
-  "Desktop Software",
-  "Quality Control Apps",
-  "Serial Device I/O",
+  "Production Software",
+  "Device & Desktop Apps",
   "Full-Stack Web",
-  "Data Science",
-  "RFID Integration",
-  "Agile Delivery",
+  "Manufacturing Tooling",
+  "Data-Driven Systems",
+  "Cross-Functional Delivery",
+  "Continuous Learning",
 ];
 
 export default function Hero() {
@@ -23,7 +23,6 @@ export default function Hero() {
     <section id="home" className="relative min-h-screen pt-24 pb-0 overflow-hidden bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-6 items-center min-h-[calc(100vh-8rem)]">
-          {/* Left copy */}
           <div className="lg:col-span-5 order-2 lg:order-1 z-10">
             <p className="text-hero-muted mb-3 text-sm uppercase tracking-[0.2em]">Available for roles</p>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-4">
@@ -34,8 +33,7 @@ export default function Hero() {
             </h1>
             <p className="text-lg text-hero-muted mb-6">{SITE.tagline}</p>
             <p className="text-hero-soft/90 mb-8 leading-relaxed max-w-md">
-              Building production software for medical devices at Medica — QC tooling,
-              real-time data, and device integrations.
+              {SITE.heroSummary}
             </p>
 
             <div className="flex flex-wrap gap-3 mb-8">
@@ -75,7 +73,6 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Center photo */}
           <div className="lg:col-span-4 order-1 lg:order-2 flex justify-center relative">
             <div className="relative w-64 sm:w-80 lg:w-full max-w-md">
               <div className="absolute -inset-3 rounded-[2rem] bg-navy/20 blur-2xl" aria-hidden />
@@ -87,7 +84,6 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right tags */}
           <div className="lg:col-span-3 order-3 hidden lg:flex flex-col items-end gap-3 self-center">
             {focusTags.map((tag) => (
               <span
@@ -101,7 +97,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Marquee */}
       <div className="mt-12 border-y border-white/10 bg-navy overflow-hidden py-4">
         <div className="marquee-track gap-10 text-black font-display font-semibold text-lg tracking-wide">
           {[...marqueeItems, ...marqueeItems].map((item, i) => (

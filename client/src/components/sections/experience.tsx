@@ -10,11 +10,15 @@ export default function Experience() {
       period: "November 2022 – Present",
       status: "Current",
       responsibilities: [
-        "Own end-to-end development of EasyLyte, a C++/Qt Quality Control app used in medical-device manufacturing workflows for real-time test visualization and serial device I/O",
-        "Optimized serial connections and multi-threaded data paths so QC operators get live charts and reliable device communication during production testing",
-        "Shipped MySQL-backed manufacturing reports that give teams searchable visibility into QC and production test data across EasyLyte systems",
-        "Built C#/.NET tooling to program RFID tags and integrate them into EasyLyte device workflows",
-        "Deliver in Agile/Scrum sprints as primary owner of EasyLyte features — from design and implementation through verification documentation",
+        "Designed and implemented the EasyLyte QC testing application in C++/Qt 6, improving measurement accuracy and reducing manual effort in laboratory workflows",
+        "Engineered high-performance multithreaded C++ modules for real-time data acquisition and processing, significantly enhancing device responsiveness",
+        "Optimized RS-232 serial communication protocols and data visualization pipelines for reliable interaction with medical analyzers in production",
+        "Implemented two-way Java communication between the Android-based analyzer and the desktop app, parsing and validating real-time instrument data streams",
+        "Developed Arduino firmware for a custom test fixture to drive and exercise instrument hardware during manufacturing and QA",
+        "Built automated board-provisioning tooling that scripts U-Boot over serial and ADB to flash OS images and deploy APKs, reducing manual setup time on the production line",
+        "Integrated MySQL for persistent calibration and QC data; developed SQL-driven reporting tools with actionable insights for manufacturing teams",
+        "Developed RFID programming solutions using C#/.NET, streamlining sample tracking and instrument authentication",
+        "Partnered with QA, manufacturing, and product management under Agile/Scrum to deliver production-ready software each sprint",
       ],
     },
     {
@@ -23,9 +27,10 @@ export default function Experience() {
       period: "January 2020 – May 2022",
       status: "Previous",
       responsibilities: [
-        "Built a Django CS portal (HTML/CSS/JS) for class registration with authentication and student dashboards used by lab peers and staff",
-        "Automated system monitoring and software updates with shell scripts and Cron, reducing manual ops work on shared UNIX lab machines",
-        "Supported lab reliability for student coursework environments across Linux systems",
+        "Developed and deployed a CS registration portal using Django, HTML, CSS, and JavaScript, streamlining student enrollment",
+        "Built secure authentication workflows and intuitive dashboards for students and faculty",
+        "Automated system monitoring and maintenance with shell scripts and cron jobs, reducing downtime and improving lab reliability",
+        "Supported faculty and students in resolving UNIX system issues, improving lab productivity and system uptime",
       ],
     },
   ];
@@ -36,7 +41,7 @@ export default function Experience() {
         <div className="text-center mb-14">
           <h2 className="text-3xl sm:text-5xl font-bold text-white mb-4 font-display">Work Experience</h2>
           <p className="text-lg text-white/55 max-w-2xl mx-auto">
-            Ownership and production delivery — Medica and earlier systems work
+            Production software for medical devices — desktop, embedded, and manufacturing tooling
           </p>
         </div>
 

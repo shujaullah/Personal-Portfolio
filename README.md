@@ -95,8 +95,8 @@ portfolio/
 5. **Education**: Modify `client/src/components/sections/education.tsx`
 
 ### Replacing Assets
-1. **Profile Photo**: Replace `attached_assets/image_1750795230400.png`
-2. **Resume PDF**: Replace `attached_assets/Resume_Shuja_1750795062850.pdf`
+1. **Profile Photo**: Replace `attached_assets/Shuja-Profile.jpg`
+2. **Resume PDF**: Replace `attached_assets/Shujaullah-Ahsan-Resume.pdf`
 
 ## 📧 Contact
 

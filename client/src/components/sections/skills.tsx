@@ -4,28 +4,51 @@ import { ChevronDown } from "lucide-react";
 const capabilities = [
   {
     title: "Desktop & Device Software",
-    body: "C++/Qt applications with multi-threaded serial I/O, real-time visualization, and production QC workflows for medical devices at Medica.",
+    body: "C++/Qt 6 EasyLyte QC apps with multithreaded real-time acquisition, RS-232 serial protocols, and data visualization for medical analyzers in production.",
+  },
+  {
+    title: "Embedded & Manufacturing Tooling",
+    body: "Arduino firmware for hardware test fixtures; automated board provisioning with U-Boot over serial and ADB to flash OS images and deploy APKs on the production line.",
   },
   {
     title: "Systems Integration",
-    body: "MySQL reporting, C#/.NET RFID tooling, and hardware-adjacent features that connect instruments to manufacturing data.",
+    body: "Two-way Java bridges to Android-based analyzers, MySQL calibration/QC storage and reporting, and C#/.NET RFID for sample tracking and instrument authentication.",
   },
   {
     title: "Full-Stack Web",
-    body: "Django + JavaScript platforms with auth, dashboards, and cloud storage (AWS S3) — from lab portals to athlete career apps.",
-  },
-  {
-    title: "Engineering Craft",
-    body: "Agile delivery, verification docs (SRD/SDD), and clear ownership from design through shipping.",
+    body: "Django + JavaScript platforms with auth and dashboards — CS registration portal and Matched athlete career app on Heroku with AWS S3.",
   },
   {
     title: "Data Science Foundation",
-    body: "MS coursework in ML, statistics, and data management — applied alongside day-to-day software engineering.",
+    body: "MS in Data Science at Northeastern (from Sept 2024) with coursework in data management/processing and web development; interest in ML and problem-solving on LeetCode.",
   },
 ];
 
+const skillTags = [
+  "Python",
+  "Java",
+  "JavaScript",
+  "C++",
+  "C#",
+  "Bash",
+  "Qt",
+  ".NET",
+  "Django",
+  "React",
+  "Spring Boot",
+  "MySQL",
+  "PostgreSQL",
+  "RS-232",
+  "Arduino",
+  "U-Boot",
+  "ADB",
+  "RFID",
+  "AWS S3",
+  "Git",
+];
+
 export default function Skills() {
-  const [openIndex, setOpenIndex] = useState(1);
+  const [openIndex, setOpenIndex] = useState(0);
 
   return (
     <section id="skills" className="py-24 bg-section">
@@ -72,18 +95,7 @@ export default function Skills() {
         </div>
 
         <div className="mt-12 flex flex-wrap justify-center gap-2">
-          {[
-            "C++",
-            "Qt",
-            "C# /.NET",
-            "MySQL",
-            "Python",
-            "Django",
-            "React",
-            "JavaScript",
-            "AWS S3",
-            "Git",
-          ].map((skill) => (
+          {skillTags.map((skill) => (
             <span
               key={skill}
               className="px-3 py-1.5 rounded-lg text-sm text-white/70 border border-white/10 bg-white/5"

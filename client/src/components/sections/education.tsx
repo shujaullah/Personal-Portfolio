@@ -6,22 +6,24 @@ export default function Education() {
     {
       degree: "Masters in Data Science",
       school: "Northeastern University, Boston, MA",
-      period: "September 2022 – Present",
+      period: "September 2024 – Present",
       status: "In Progress",
-      coursework: ["Data Management & Processing", "Web Development", "Machine Learning", "Statistical Analysis"],
+      coursework: ["Introduction to Data Management and Processing", "Web Development"],
       highlight: true,
     },
     {
       degree: "Bachelor of Science in Computer Science",
-      school: "University of Massachusetts Boston",
+      school: "University of Massachusetts Boston, Boston, MA",
       period: "September 2019 – May 2022",
       status: "Completed",
       coursework: [
-        "Data Structures & Algorithms",
+        "Data Structures and Algorithms",
+        "Higher Level Languages",
         "Java Compiler",
         "Operating Systems",
         "Database Management",
         "Android Development",
+        "Theory of Computation",
       ],
       highlight: false,
     },
@@ -30,7 +32,12 @@ export default function Education() {
       school: "Quincy College, Quincy, MA",
       period: "September 2017 – May 2019",
       status: "Foundation",
-      coursework: ["Advanced Java Programming", "Data Structures in C++", "Linux Administration", "Robotics"],
+      coursework: [
+        "Advanced Java Programming",
+        "Data Structures and Algorithms in C++",
+        "Linux Administration",
+        "Robotics",
+      ],
       highlight: false,
     },
   ];
@@ -41,7 +48,7 @@ export default function Education() {
         <div className="text-center mb-14">
           <h2 className="text-3xl sm:text-5xl font-bold text-white mb-4 font-display">Education</h2>
           <p className="text-lg text-white/55 max-w-2xl mx-auto">
-            Computer science foundation and graduate data science
+            Computer science foundation and graduate data science at Northeastern
           </p>
         </div>
 

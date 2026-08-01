@@ -17,7 +17,7 @@ export default function Achievements() {
     },
     {
       title: "CS Scholarship",
-      subtitle: "UMASS Boston",
+      subtitle: "UMASS Boston Computer Science",
       year: "2021 & 2022",
       icon: GraduationCap,
     },

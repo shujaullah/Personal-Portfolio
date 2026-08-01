@@ -23,15 +23,15 @@ interface Project {
 export default function Projects() {
   const projects: Project[] = [
     {
-      title: "EasyLyte Application",
+      title: "EasyLyte QC Application",
       featured: true,
       problem:
-        "Medical-device manufacturing needed reliable Quality Control software with live device data and durable test records.",
+        "Medical-device manufacturing needed accurate QC testing software with reliable analyzer communication and less manual lab effort.",
       role:
-        "Lead developer — C++/Qt UI, multi-threaded serial I/O, MySQL storage, and C#/.NET RFID programming integrations.",
+        "Designed and built EasyLyte in C++/Qt 6 with multithreaded acquisition, RS-232 protocols, Android analyzer Java bridges, Arduino fixtures, U-Boot/ADB provisioning, MySQL reporting, and C#/.NET RFID tooling.",
       result:
-        "Production QC tooling used in Medica manufacturing workflows for real-time visualization, device connectivity, and reporting.",
-      technologies: ["C++", "Qt", "MySQL", "Multi-threading", "C#", ".NET"],
+        "Production QC and manufacturing tooling at Medica — improved measurement accuracy, device responsiveness, and reduced line setup time.",
+      technologies: ["C++", "Qt 6", "RS-232", "Java/Android", "Arduino", "U-Boot", "ADB", "MySQL", "C#/.NET"],
       links: [
         { type: "private", label: "Private / NDA" },
         { type: "mailto", subject: "EasyLyte walkthrough request", label: "Request walkthrough" },
@@ -41,31 +41,32 @@ export default function Projects() {
       title: "Matched — Athletes Career Platform",
       featured: true,
       problem:
-        "Professional athletes needed a structured way to plan post-retirement careers with profiles, auth, and personalized dashboards.",
-      role: "Team lead — Django backend, auth/registration flows, AWS S3 assets, and Heroku deployment.",
+        "Professional athletes needed a post-retirement career portal with registration, auth, and personalized dashboards.",
+      role:
+        "Led a team building the portal in Django with HTML/CSS/JavaScript; AWS S3 for assets; deployed on Heroku.",
       result:
-        "Full-stack web platform with registration, authentication, and personalized career dashboards for athletes.",
-      technologies: ["Django", "JavaScript", "AWS S3", "Heroku"],
+        "Full-stack career portal with user registration, authentication, and dashboard features for pro athletes.",
+      technologies: ["Django", "AWS S3", "HTML", "CSS", "JavaScript", "Heroku"],
       links: [
         { type: "github", href: SITE.github, label: "GitHub profile" },
         { type: "mailto", subject: "Matched demo / repo request", label: "Ask for demo" },
       ],
     },
     {
-      title: "Java Compiler (subset)",
+      title: "Compiler Project",
       featured: false,
-      problem: "Needed a from-scratch compiler pipeline to deepen systems understanding.",
-      role: "Sole developer — lexer, parser, syntax errors, and bytecode generation.",
-      result: "Working educational compiler from lexical analysis through bytecode emission.",
+      problem: "Build a subset Java compiler covering the full front-end pipeline.",
+      role: "Sole developer — token validation, parse tree generation, syntax checking, and bytecode output.",
+      result: "Working educational compiler capable of validating tokens through bytecode generation.",
       technologies: ["Java", "Parsing", "Bytecode"],
       links: [{ type: "github", href: SITE.github, label: "GitHub profile" }],
     },
     {
-      title: "JDBC Shop Management System",
+      title: "JDBC Shop",
       featured: false,
-      problem: "Small-shop ops needed CLI tooling for customers, inventory, and sales.",
-      role: "Sole developer — JDBC + Oracle SQL schema and command-line workflows.",
-      result: "End-to-end shop management CLI covering customers, inventory, and sales.",
+      problem: "Need a CLI shop system for customers, products, and sales against a relational backend.",
+      role: "Sole developer — JDBC modules backed by Oracle SQL.",
+      result: "Command-line shop management system with customers, products, and sales modules.",
       technologies: ["JDBC", "Oracle SQL", "CLI"],
       links: [{ type: "github", href: SITE.github, label: "GitHub profile" }],
     },
@@ -123,7 +124,7 @@ export default function Projects() {
         <div className="text-center mb-14">
           <h2 className="text-3xl sm:text-5xl font-bold text-white mb-4 font-display">Featured Projects</h2>
           <p className="text-lg text-white/55 max-w-2xl mx-auto">
-            Production and team work first — problem, ownership, outcome
+            Production work at Medica plus selected personal and coursework projects
           </p>
         </div>
 

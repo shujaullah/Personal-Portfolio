@@ -5,33 +5,71 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, MapPin, Linkedin, Github, Download } from "lucide-react";
+import { Mail, MapPin, Linkedin, Github, Download, Copy, ExternalLink } from "lucide-react";
 import { SITE, downloadResume, mailtoHire } from "@/lib/site";
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const { toast } = useToast();
 
+  const isComplete = Boolean(formData.name && formData.email && formData.message);
+
+  const subject = `Portfolio contact from ${formData.name || "a visitor"}`;
+  const body = `${formData.message}\n\n— ${formData.name}\n${formData.email}`;
+
+  const warnIncomplete = () => {
+    toast({
+      title: "Please fill in all fields",
+      description: "Name, email, and message are required.",
+      variant: "destructive",
+    });
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
-      toast({
-        title: "Please fill in all fields",
-        description: "Name, email, and message are required.",
-        variant: "destructive",
-      });
+    if (!isComplete) {
+      warnIncomplete();
       return;
     }
 
-    const subject = encodeURIComponent(`Portfolio contact from ${formData.name}`);
-    const body = encodeURIComponent(
-      `${formData.message}\n\n— ${formData.name}\n${formData.email}`,
-    );
-    window.location.href = `mailto:${SITE.email}?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(body)}`;
     toast({
       title: "Opening your email app",
-      description: "Your message is ready to send via mailto.",
+      description: "No mail app? Use the Gmail or Copy option below.",
     });
+  };
+
+  const openGmail = () => {
+    if (!isComplete) {
+      warnIncomplete();
+      return;
+    }
+    const url = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+      SITE.email,
+    )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  const copyMessage = async () => {
+    if (!isComplete) {
+      warnIncomplete();
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(`To: ${SITE.email}\nSubject: ${subject}\n\n${body}`);
+      toast({
+        title: "Copied to clipboard",
+        description: `Paste it into any email addressed to ${SITE.email}.`,
+      });
+    } catch {
+      toast({
+        title: "Couldn't copy automatically",
+        description: `Please email ${SITE.email} directly.`,
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -100,7 +138,7 @@ export default function Contact() {
           <Card className="surface-card rounded-2xl border-white/10">
             <CardContent className="p-8">
               <p className="text-white/50 text-sm mb-6">
-                Draft a message — opens in your email client (works on GitHub Pages).
+                Draft a message, then send it your way — mail app, Gmail, or copy and paste.
               </p>
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
@@ -142,8 +180,27 @@ export default function Contact() {
                   />
                 </div>
                 <Button type="submit" className="w-full btn-orange h-11">
-                  Open in Email
+                  <Mail className="mr-2 h-4 w-4" />
+                  Send Message
                 </Button>
+                <div className="grid grid-cols-2 gap-3">
+                  <Button
+                    type="button"
+                    onClick={openGmail}
+                    className="btn-outline-light h-10 text-sm"
+                  >
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Gmail
+                  </Button>
+                  <Button
+                    type="button"
+                    onClick={copyMessage}
+                    className="btn-outline-light h-10 text-sm"
+                  >
+                    <Copy className="mr-2 h-4 w-4" />
+                    Copy
+                  </Button>
+                </div>
               </form>
             </CardContent>
           </Card>

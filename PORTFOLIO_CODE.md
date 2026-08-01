@@ -38,8 +38,8 @@ This is the complete code for Shujaullah Ahsan's professional portfolio website.
 ├── shared/
 │   └── schema.ts
 ├── attached_assets/
-│   ├── Resume_Shuja_1750795062850.pdf
-│   └── image_1750795230400.png
+│   ├── Shujaullah-Ahsan-Resume.pdf
+│   └── Shuja-Profile.jpg
 └── package.json
 ```
 
