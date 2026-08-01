@@ -46,6 +46,7 @@ export default function Education() {
     <section id="education" className="py-24 bg-section-alt">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
+          <p className="eyebrow mb-4">Background</p>
           <h2 className="text-3xl sm:text-5xl font-bold text-white mb-4 font-display">Education</h2>
           <p className="text-lg text-white/55 max-w-2xl mx-auto">
             Computer science foundation and graduate data science at Northeastern

@@ -5,36 +5,38 @@
 @tailwind utilities;
 
 :root {
-  /* Dark charcoal + vivid orange (Jenny-inspired) */
-  --background: hsl(0, 0%, 6%);
-  --foreground: hsl(0, 0%, 96%);
-  --card: hsl(0, 0%, 10%);
-  --card-foreground: hsl(0, 0%, 96%);
-  --popover: hsl(0, 0%, 10%);
-  --popover-foreground: hsl(0, 0%, 96%);
-  --primary: hsl(32, 100%, 50%);
-  --primary-foreground: hsl(0, 0%, 6%);
-  --secondary: hsl(0, 0%, 14%);
-  --secondary-foreground: hsl(0, 0%, 96%);
-  --muted: hsl(0, 0%, 14%);
-  --muted-foreground: hsl(0, 0%, 62%);
-  --accent: hsl(32, 100%, 50%);
-  --accent-foreground: hsl(0, 0%, 6%);
+  /* Slate navy + amber accent */
+  --background: hsl(222, 18%, 16%);
+  --foreground: hsl(220, 20%, 96%);
+  --card: hsl(222, 16%, 21%);
+  --card-foreground: hsl(220, 20%, 96%);
+  --popover: hsl(222, 16%, 21%);
+  --popover-foreground: hsl(220, 20%, 96%);
+  --primary: hsl(37, 92%, 55%);
+  --primary-foreground: hsl(222, 25%, 12%);
+  --secondary: hsl(222, 15%, 25%);
+  --secondary-foreground: hsl(220, 20%, 96%);
+  --muted: hsl(222, 15%, 25%);
+  --muted-foreground: hsl(220, 10%, 65%);
+  --accent: hsl(37, 92%, 55%);
+  --accent-foreground: hsl(222, 25%, 12%);
   --destructive: hsl(0, 72%, 51%);
   --destructive-foreground: hsl(0, 0%, 98%);
-  --border: hsl(0, 0%, 18%);
-  --input: hsl(0, 0%, 18%);
-  --ring: hsl(32, 100%, 50%);
+  --border: hsl(222, 14%, 28%);
+  --input: hsl(222, 14%, 28%);
+  --ring: hsl(37, 92%, 55%);
   --radius: 0.75rem;
 
-  --navy: hsl(32, 100%, 50%);
-  --navy-light: hsl(32, 100%, 58%);
-  --navy-dark: hsl(28, 100%, 42%);
-  --ink: hsl(0, 0%, 6%);
-  --surface: hsl(0, 0%, 10%);
-  --surface-2: hsl(0, 0%, 14%);
-  --hero-muted: hsl(0, 0%, 70%);
-  --hero-soft: hsl(0, 0%, 82%);
+  /* Brand tokens (kept as --navy* so existing class names keep working) */
+  --navy: hsl(37, 92%, 55%);
+  --navy-light: hsl(39, 95%, 62%);
+  --navy-dark: hsl(33, 88%, 48%);
+  --ink: hsl(222, 18%, 16%);
+  --ink-deep: hsl(222, 21%, 13%);
+  --surface: hsl(222, 16%, 21%);
+  --surface-2: hsl(222, 15%, 25%);
+  --hero-muted: hsl(220, 12%, 72%);
+  --hero-soft: hsl(220, 14%, 84%);
 }
 
 @layer base {
@@ -117,20 +119,41 @@
   }
 
   .bg-section-alt {
-    background-color: hsl(0, 0%, 8%);
+    background-color: var(--ink-deep);
+  }
+
+  .bg-surface-2 {
+    background-color: var(--surface-2);
   }
 
   .btn-orange {
-    @apply bg-navy text-black font-semibold rounded-xl hover:bg-navy-light transition-colors;
+    @apply bg-navy font-semibold rounded-xl transition-colors;
+    color: var(--ink-deep);
+  }
+
+  .btn-orange:hover {
+    background-color: var(--navy-light);
   }
 
   .btn-outline-light {
-    @apply bg-transparent text-white border border-white/40 font-semibold rounded-xl hover:border-white hover:bg-white/5 transition-colors;
+    @apply bg-transparent text-white border border-white/25 font-semibold rounded-xl hover:border-white/60 hover:bg-white/5 transition-colors;
   }
 
   .surface-card {
     background-color: var(--surface);
-    border: 1px solid hsl(0, 0%, 16%);
+    border: 1px solid hsl(222, 14%, 28%);
+  }
+
+  /* Small uppercase section label with a leading amber rule */
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-navy font-semibold;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background-color: var(--navy);
   }
 
   .marquee-track {

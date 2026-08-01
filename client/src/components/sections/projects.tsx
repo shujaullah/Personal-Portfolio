@@ -119,9 +119,10 @@ export default function Projects() {
   );
 
   return (
-    <section id="projects" className="py-24 bg-section">
+    <section id="projects" className="py-24 bg-section-alt">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
+          <p className="eyebrow mb-4">Selected work</p>
           <h2 className="text-3xl sm:text-5xl font-bold text-white mb-4 font-display">Featured Projects</h2>
           <p className="text-lg text-white/55 max-w-2xl mx-auto">
             Production work at Medica plus selected personal and coursework projects

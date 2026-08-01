@@ -33,6 +33,7 @@ export default function Achievements() {
     <section id="achievements" className="py-24 bg-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
+          <p className="eyebrow mb-4">Recognition</p>
           <h2 className="text-3xl sm:text-5xl font-bold text-white mb-4 font-display">
             Achievements
           </h2>

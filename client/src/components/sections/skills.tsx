@@ -53,9 +53,12 @@ export default function Skills() {
   return (
     <section id="skills" className="py-24 bg-section">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-5xl font-bold text-white font-display mb-12 text-center">
-          How I Ship Software
-        </h2>
+        <div className="text-center mb-12">
+          <p className="eyebrow mb-4">Capabilities</p>
+          <h2 className="text-3xl sm:text-5xl font-bold text-white font-display">
+            How I Ship Software
+          </h2>
+        </div>
 
         <div className="space-y-3">
           {capabilities.map((item, index) => {
