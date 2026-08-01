@@ -1,84 +1,85 @@
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, Download } from "lucide-react";
-import professionalPhoto from "@assets/image_1750795230400.png";
+import { Github, Linkedin, Mail, ArrowRight } from "lucide-react";
+import professionalPhoto from "@assets/Shuja-Profile.jpg";
+import { SITE, downloadResume, mailtoHire } from "@/lib/site";
 
 export default function Hero() {
-  const scrollToContact = () => {
-    const element = document.getElementById("contact");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const downloadResume = () => {
-    // Create a link to download the resume PDF
-    const link = document.createElement('a');
-    link.href = '/attached_assets/Resume_Shuja_1750795062850.pdf';
-    link.download = 'Shujaullah_Ahsan_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  const socials = [
+    { href: SITE.linkedin, icon: Linkedin, label: "LinkedIn", external: true },
+    { href: SITE.github, icon: Github, label: "GitHub", external: true },
+    { href: mailtoHire(), icon: Mail, label: "Email", external: false },
+  ];
 
   return (
-    <section id="home" className="gradient-bg min-h-screen flex items-center justify-center pt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center">
-          <div className="mb-8">
-            <img
-              src={professionalPhoto}
-              alt="Shujaullah Ahsan Professional Photo"
-              className="w-48 h-48 rounded-full mx-auto object-cover shadow-2xl border-8 border-white/20"
-            />
+    <section id="home" className="relative min-h-screen flex items-center pt-28 pb-16 bg-section">
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+          {/* Name block */}
+          <div className="lg:col-span-4 order-2 lg:order-1">
+            <h1 className="font-display text-5xl sm:text-6xl xl:text-7xl font-bold text-white leading-[0.95] tracking-tight">
+              {SITE.firstName}
+              <br />
+              {SITE.lastName}
+              <span className="text-navy">.</span>
+            </h1>
+            <div className="w-14 h-1 bg-navy mt-6 mb-8 rounded-full" />
+
+            <div className="flex gap-3">
+              {socials.map(({ href, icon: Icon, label, external }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={external ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:border-navy hover:text-navy transition-colors"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Shujaullah Ahsan
-          </h1>
-          <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
-            Software Development Engineer | Data Science Graduate Student | Full-Stack Developer
-          </p>
-          <p className="text-lg text-blue-50 mb-12 max-w-4xl mx-auto leading-relaxed">
-            Passionate about creating innovative software solutions with expertise in C++, Java, Python, and modern web technologies. 
-            Currently pursuing Masters in Data Science while leading development of cutting-edge applications at Medica Corporation.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              onClick={scrollToContact}
-              className="bg-white text-navy px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
-            >
-              Get In Touch
-            </Button>
-            <Button
-              onClick={downloadResume}
-              className="bg-white text-navy border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300"
-            >
-              <Download className="mr-2 h-4 w-4" />
-              Download Resume
-            </Button>
+
+          {/* Photo */}
+          <div className="lg:col-span-4 order-1 lg:order-2 flex justify-center">
+            <div className="relative w-56 sm:w-72 lg:w-full max-w-sm">
+              <div className="absolute -inset-4 rounded-[2.5rem] bg-navy/15 blur-3xl" aria-hidden />
+              <img
+                src={professionalPhoto}
+                alt={`${SITE.name} — professional photo`}
+                className="relative w-full aspect-square object-cover rounded-[2rem] border border-white/10"
+              />
+            </div>
           </div>
-          <div className="flex justify-center space-x-6 mt-12">
-            <a
-              href="https://github.com/shujaullah"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-blue-200 transition-colors duration-300"
-            >
-              <Github className="h-8 w-8" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/shujaullah-ahsan/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-blue-200 transition-colors duration-300"
-            >
-              <Linkedin className="h-8 w-8" />
-            </a>
-            <a
-              href="mailto:ahsanshuja1127@gmail.com"
-              className="text-white hover:text-blue-200 transition-colors duration-300"
-            >
-              <Mail className="h-8 w-8" />
-            </a>
+
+          {/* Introduction */}
+          <div className="lg:col-span-4 order-3">
+            <p className="eyebrow mb-5">Introduction</p>
+            <h2 className="font-display text-2xl sm:text-3xl font-semibold text-white leading-snug mb-5">
+              Software Development Engineer, based in Boston.
+            </h2>
+            <p className="text-hero-muted leading-relaxed mb-8">
+              {SITE.heroSummary}
+            </p>
+
+            <div className="flex flex-wrap items-center gap-6">
+              <button
+                type="button"
+                onClick={() => scrollTo("experience")}
+                className="group inline-flex items-center gap-2 text-white font-medium border-b-2 border-navy pb-1 hover:text-navy transition-colors"
+              >
+                My story
+                <ArrowRight className="h-4 w-4 text-navy transition-transform group-hover:translate-x-1" />
+              </button>
+
+              <Button onClick={downloadResume} className="btn-orange px-6 h-11">
+                Download Resume
+              </Button>
+            </div>
           </div>
         </div>
       </div>

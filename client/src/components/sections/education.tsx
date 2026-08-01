@@ -6,86 +6,94 @@ export default function Education() {
     {
       degree: "Masters in Data Science",
       school: "Northeastern University, Boston, MA",
-      period: "September 2022 – Present",
+      period: "September 2024 – Present",
       status: "In Progress",
-      statusColor: "bg-blue-500",
-      coursework: ["Data Management & Processing", "Web Development", "Machine Learning", "Statistical Analysis"],
-      gradient: true
+      coursework: ["Introduction to Data Management and Processing", "Web Development"],
+      highlight: true,
     },
     {
       degree: "Bachelor of Science in Computer Science",
-      school: "University of Massachusetts Boston",
+      school: "University of Massachusetts Boston, Boston, MA",
       period: "September 2019 – May 2022",
       status: "Completed",
-      statusColor: "bg-green-500",
-      coursework: ["Data Structures & Algorithms", "Java Compiler", "Operating Systems", "Database Management", "Android Development", "Theory of Computation"],
-      gradient: false
+      coursework: [
+        "Data Structures and Algorithms",
+        "Higher Level Languages",
+        "Java Compiler",
+        "Operating Systems",
+        "Database Management",
+        "Android Development",
+        "Theory of Computation",
+      ],
+      highlight: false,
     },
     {
       degree: "Associate in Computer Science",
       school: "Quincy College, Quincy, MA",
       period: "September 2017 – May 2019",
       status: "Foundation",
-      statusColor: "bg-blue-500",
-      coursework: ["Advanced Java Programming", "Data Structures in C++", "Linux Administration", "Robotics"],
-      gradient: false
-    }
+      coursework: [
+        "Advanced Java Programming",
+        "Data Structures and Algorithms in C++",
+        "Linux Administration",
+        "Robotics",
+      ],
+      highlight: false,
+    },
   ];
 
   return (
-    <section id="education" className="py-20 bg-white">
+    <section id="education" className="py-24 bg-section-alt">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Education</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Academic foundation in computer science and data science
+        <div className="text-center mb-14">
+          <p className="eyebrow mb-4">Background</p>
+          <h2 className="text-3xl sm:text-5xl font-bold text-white mb-4 font-display">Education</h2>
+          <p className="text-lg text-white/55 max-w-2xl mx-auto">
+            Computer science foundation and graduate data science at Northeastern
           </p>
         </div>
 
-        <div className="space-y-8">
-          {education.map((edu, index) => (
-            <Card key={index} className={`shadow-lg hover:shadow-xl transition-all duration-300 ${
-              edu.gradient ? 'gradient-bg text-white' : 'bg-gray-50'
-            }`}>
-              <CardContent className="p-8">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                  <div className="mb-4 md:mb-0">
-                    <h3 className={`text-2xl font-bold mb-2 ${edu.gradient ? 'text-white' : 'text-gray-900'}`}>
-                      {edu.degree}
-                    </h3>
-                    <p className={`text-lg mb-2 ${edu.gradient ? 'text-blue-100' : 'text-navy'}`}>
+        <div className="space-y-5 max-w-4xl mx-auto">
+          {education.map((edu) => (
+            <Card
+              key={edu.degree}
+              className={`rounded-2xl overflow-hidden border-0 ${
+                edu.highlight ? "bg-navy text-black" : "surface-card text-white"
+              }`}
+            >
+              <CardContent className="p-7">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                  <div>
+                    <h3 className="text-xl sm:text-2xl font-bold font-display mb-1">{edu.degree}</h3>
+                    <p className={`text-lg mb-1 ${edu.highlight ? "text-black/75" : "text-navy"}`}>
                       {edu.school}
                     </p>
-                    <p className={`${edu.gradient ? 'text-blue-50' : 'text-gray-600'}`}>
-                      {edu.period}
-                    </p>
+                    <p className={edu.highlight ? "text-black/60" : "text-white/45"}>{edu.period}</p>
                   </div>
-                  <div className="flex items-center">
-                    <Badge 
-                      variant="secondary" 
-                      className={`${edu.gradient ? 'bg-white/20 text-white' : 'bg-green-100 text-green-800'} font-medium`}
-                    >
-                      {edu.status}
-                    </Badge>
-                  </div>
+                  <Badge
+                    className={
+                      edu.highlight
+                        ? "bg-black/15 text-black w-fit"
+                        : "bg-white/10 text-white/80 w-fit"
+                    }
+                  >
+                    {edu.status}
+                  </Badge>
                 </div>
-                <div className="mt-6">
-                  <p className={`mb-3 font-semibold ${edu.gradient ? 'text-blue-50' : 'text-gray-700'}`}>
-                    Relevant Coursework:
+                <div className="mt-5">
+                  <p className={`mb-2 font-semibold text-sm ${edu.highlight ? "text-black/70" : "text-white/50"}`}>
+                    Relevant coursework
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {edu.coursework.map((course, courseIndex) => (
-                      <Badge 
-                        key={courseIndex} 
-                        variant="secondary"
-                        className={`${
-                          edu.gradient 
-                            ? 'bg-white/20 text-white' 
-                            : 'bg-gray-200 text-gray-700'
-                        } text-sm`}
+                    {edu.coursework.map((course) => (
+                      <span
+                        key={course}
+                        className={`text-sm px-3 py-1 rounded-lg ${
+                          edu.highlight ? "bg-black/10 text-black/80" : "bg-white/5 text-white/70"
+                        }`}
                       >
                         {course}
-                      </Badge>
+                      </span>
                     ))}
                   </div>
                 </div>

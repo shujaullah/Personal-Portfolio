@@ -54,9 +54,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Serve resume PDF
-  app.get("/attached_assets/Resume_Shuja_1750795062850.pdf", (req, res) => {
-    const resumePath = path.join(process.cwd(), "attached_assets", "Resume_Shuja_1750795062850.pdf");
-    res.download(resumePath, "Shujaullah_Ahsan_Resume.pdf", (err) => {
+  app.get("/attached_assets/Shujaullah-Ahsan-Resume.pdf", (req, res) => {
+    const resumePath = path.join(process.cwd(), "attached_assets", "Shujaullah-Ahsan-Resume.pdf");
+    res.download(resumePath, "Shujaullah-Ahsan-Resume.pdf", (err) => {
       if (err) {
         res.status(404).json({ message: "Resume not found" });
       }

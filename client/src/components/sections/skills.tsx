@@ -1,107 +1,110 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Code, Layers, Database, Wrench, ClipboardCheck, Monitor } from "lucide-react";
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+
+const capabilities = [
+  {
+    title: "Desktop & Device Software",
+    body: "C++/Qt 6 EasyLyte QC apps with multithreaded real-time acquisition, RS-232 serial protocols, and data visualization for medical analyzers in production.",
+  },
+  {
+    title: "Embedded & Manufacturing Tooling",
+    body: "Arduino firmware for hardware test fixtures; automated board provisioning with U-Boot over serial and ADB to flash OS images and deploy APKs on the production line.",
+  },
+  {
+    title: "Systems Integration",
+    body: "Two-way Java bridges to Android-based analyzers, MySQL calibration/QC storage and reporting, and C#/.NET RFID for sample tracking and instrument authentication.",
+  },
+  {
+    title: "Full-Stack Web",
+    body: "Django + JavaScript platforms with auth and dashboards — CS registration portal and Matched athlete career app on Heroku with AWS S3.",
+  },
+  {
+    title: "Data Science Foundation",
+    body: "MS in Data Science at Northeastern (from Sept 2024) with coursework in data management/processing and web development; interest in ML and problem-solving on LeetCode.",
+  },
+];
+
+const skillTags = [
+  "Python",
+  "Java",
+  "JavaScript",
+  "C++",
+  "C#",
+  "Bash",
+  "Qt",
+  ".NET",
+  "Django",
+  "React",
+  "Spring Boot",
+  "MySQL",
+  "PostgreSQL",
+  "RS-232",
+  "Arduino",
+  "U-Boot",
+  "ADB",
+  "RFID",
+  "AWS S3",
+  "Git",
+];
 
 export default function Skills() {
-  const skillCategories = [
-    {
-      title: "Programming Languages",
-      icon: Code,
-      color: "bg-navy",
-      skills: [
-        { name: "Python", level: 5 },
-        { name: "Java", level: 5 },
-        { name: "C++", level: 4 },
-        { name: "JavaScript", level: 4 },
-        { name: "C#", level: 3 },
-      ]
-    },
-    {
-      title: "Frameworks & Libraries",
-      icon: Layers,
-      color: "bg-green-500",
-      skills: ["Django", "React", "Spring Boot", "Qt", ".NET", "Spring", "Android Development"]
-    },
-    {
-      title: "Databases & Backend",
-      icon: Database,
-      color: "bg-purple-500",
-      skills: ["MySQL", "PostgreSQL", "AWS S3", "Heroku", "Oracle SQL", "MongoDB"]
-    },
-    {
-      title: "Development Tools",
-      icon: Wrench,
-      color: "bg-red-500",
-      skills: ["Git/GitHub", "IntelliJ", "VS Code", "Android Studio", "PyCharm", "Bitbucket"]
-    },
-    {
-      title: "Testing & Documentation",
-      icon: ClipboardCheck,
-      color: "bg-orange-500",
-      skills: ["Espresso Testing", "Risk Assessment", "SRD Writing", "SDD Creation", "Software Verification"]
-    },
-    {
-      title: "Systems & Emerging Tech",
-      icon: Monitor,
-      color: "bg-indigo-500",
-      skills: ["Linux", "Windows", "macOS", "AI/ML", "TypeScript", "R"]
-    }
-  ];
-
-  const SkillBar = ({ name, level }: { name: string; level: number }) => (
-    <div className="flex items-center">
-      <span className="text-gray-700 flex-1">{name}</span>
-      <div className="ml-4 w-24 bg-gray-200 rounded-full h-2">
-        <div 
-          className="bg-navy h-2 rounded-full transition-all duration-500"
-          style={{ width: `${(level / 5) * 100}%` }}
-        />
-      </div>
-    </div>
-  );
-
-  const SkillTag = ({ skill }: { skill: string }) => (
-    <span className="inline-block bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700 mr-2 mb-2">
-      {skill}
-    </span>
-  );
+  const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="skills" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Skills & Technologies</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Comprehensive expertise across modern development technologies and methodologies
-          </p>
+    <section id="skills" className="py-24 bg-section">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <p className="eyebrow mb-4">Capabilities</p>
+          <h2 className="text-3xl sm:text-5xl font-bold text-white font-display">
+            How I Ship Software
+          </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, index) => (
-            <Card key={index} className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <CardContent className="p-8">
-                <div className="text-center mb-6">
-                  <div className={`w-16 h-16 ${category.color} rounded-xl flex items-center justify-center mx-auto mb-4`}>
-                    <category.icon className="text-white h-8 w-8" />
+        <div className="space-y-3">
+          {capabilities.map((item, index) => {
+            const isOpen = openIndex === index;
+            return (
+              <button
+                key={item.title}
+                type="button"
+                onClick={() => setOpenIndex(isOpen ? -1 : index)}
+                className={`w-full text-left rounded-2xl transition-all duration-300 overflow-hidden ${
+                  isOpen
+                    ? "bg-navy text-black"
+                    : "bg-surface-2 text-white hover:bg-white/10"
+                }`}
+                style={{ backgroundColor: isOpen ? undefined : "var(--surface-2)" }}
+              >
+                <div className="flex items-center justify-between px-6 py-5">
+                  <span className="font-display text-lg sm:text-xl font-semibold">{item.title}</span>
+                  <ChevronDown
+                    className={`h-5 w-5 shrink-0 transition-transform duration-300 ${
+                      isOpen ? "rotate-180 text-black" : "text-navy"
+                    }`}
+                  />
+                </div>
+                <div
+                  className={`grid transition-all duration-300 ${
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="px-6 pb-6 text-black/80 leading-relaxed max-w-3xl">{item.body}</p>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900">{category.title}</h3>
                 </div>
-                <div className="space-y-3">
-                  {Array.isArray(category.skills) && typeof category.skills[0] === 'object' ? (
-                    // Skills with levels (programming languages)
-                    category.skills.map((skill: any, skillIndex: number) => (
-                      <SkillBar key={skillIndex} name={skill.name} level={skill.level} />
-                    ))
-                  ) : (
-                    // Skills as tags
-                    <div>
-                      {(category.skills as string[]).map((skill, skillIndex) => (
-                        <SkillTag key={skillIndex} skill={skill} />
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="mt-12 flex flex-wrap justify-center gap-2">
+          {skillTags.map((skill) => (
+            <span
+              key={skill}
+              className="px-3 py-1.5 rounded-lg text-sm text-white/70 border border-white/10 bg-white/5"
+            >
+              {skill}
+            </span>
           ))}
         </div>
       </div>

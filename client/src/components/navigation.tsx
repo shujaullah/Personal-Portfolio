@@ -2,83 +2,98 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+import { SITE, mailtoHire } from "@/lib/site";
+
+const navItems = [
+  { label: "Home", href: "home" },
+  { label: "About", href: "about" },
+  { label: "Experience", href: "experience" },
+  { label: "Work", href: "projects" },
+  { label: "Skills", href: "skills" },
+  { label: "Contact", href: "contact" },
+];
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false);
-    }
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    setIsOpen(false);
   };
-
-  const navItems = [
-    { label: "Home", href: "home" },
-    { label: "Skills", href: "skills" },
-    { label: "Experience", href: "experience" },
-    { label: "Projects", href: "projects" },
-    { label: "Education", href: "education" },
-    { label: "Contact", href: "contact" },
-  ];
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/95 backdrop-blur-sm shadow-sm" : "bg-white/95 backdrop-blur-sm"
+      className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
+        isScrolled ? "bg-[hsl(222,21%,13%)]/95 backdrop-blur-md border-b border-white/5" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          <div className="flex-shrink-0">
-            <h1 className="text-xl font-bold text-navy">Shujaullah Ahsan</h1>
+        <div className="flex justify-between items-center py-5">
+          <button
+            type="button"
+            onClick={() => scrollToSection("home")}
+            className="flex items-center gap-2.5"
+            aria-label="Back to top"
+          >
+            <span className="w-8 h-8 rounded-xl bg-navy flex items-center justify-center font-display font-bold text-[hsl(222,21%,13%)]">
+              S
+            </span>
+            <span className="text-lg font-semibold text-white font-display tracking-tight">
+              {SITE.shortName}
+            </span>
+          </button>
+
+          <div className="hidden lg:flex items-center gap-8">
+            {navItems.map((item) => (
+              <button
+                key={item.href}
+                type="button"
+                onClick={() => scrollToSection(item.href)}
+                className="text-sm text-white/55 hover:text-white transition-colors font-medium"
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              {navItems.map((item) => (
-                <button
-                  key={item.href}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-gray-700 hover:text-navy transition-colors duration-300 font-medium"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
+            <Button asChild className="btn-orange px-5 h-10">
+              <a href={mailtoHire("Let's talk — Portfolio")}>Let&apos;s Talk</a>
+            </Button>
           </div>
 
-          {/* Mobile Navigation */}
           <div className="md:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[250px]">
-                <div className="flex flex-col space-y-4 mt-8">
+              <SheetContent
+                side="right"
+                className="w-[280px] bg-[hsl(222,21%,13%)] border-white/10 text-white"
+              >
+                <div className="flex flex-col space-y-2 mt-8">
                   {navItems.map((item) => (
                     <button
                       key={item.href}
+                      type="button"
                       onClick={() => scrollToSection(item.href)}
-                      className="text-left text-gray-700 hover:text-navy transition-colors duration-300 font-medium py-2"
+                      className="text-left text-white/75 hover:text-navy transition-colors font-medium py-3"
                     >
                       {item.label}
                     </button>
                   ))}
+                  <Button asChild className="btn-orange mt-4">
+                    <a href={mailtoHire("Let's talk — Portfolio")}>Let&apos;s Talk</a>
+                  </Button>
                 </div>
               </SheetContent>
             </Sheet>
